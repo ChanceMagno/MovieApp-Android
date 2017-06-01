@@ -2,6 +2,7 @@ package com.example.guest.movieapp.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import static java.lang.Float.parseFloat;
 
 /**
  * Created by Guest on 6/1/17.
@@ -69,6 +72,8 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
             Picasso.with(itemView.getContext()).load(movie.getPhoto()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(mMovieImageView);
             mMovieOverviewView.setText(movie.getOverview());
             mReleaseDateTextView.setText(movie.getReleaseDate());
+            Log.i("rating", movie.getRating());
+            mRatingBar.setRating(parseFloat(movie.getRating()) / 2);
         }
     }
 }
