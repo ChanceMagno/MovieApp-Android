@@ -53,7 +53,7 @@ public class MovieService {
                 for (int i = 0; i < movieListJSON.length(); i++) {
                     JSONObject movieJSON = movieListJSON.getJSONObject(i);
                     String title = movieJSON.getString("title");
-                    String photo = movieJSON.getString("backdrop_path");
+                    String photo = movieJSON.getString("poster_path");
                     String overview = movieJSON.getString("overview");
                     String releaseDate = movieJSON.getString("release_date");
                     String rating = movieJSON.getString("vote_average");

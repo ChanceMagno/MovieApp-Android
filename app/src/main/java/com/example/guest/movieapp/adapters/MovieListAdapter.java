@@ -28,8 +28,8 @@ import static java.lang.Float.parseFloat;
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
     private ArrayList<Movie> mMovies = new ArrayList<>();
     private Context mContext;
-    private static final int MAX_WIDTH = 120;
-    private static final int MAX_HEIGHT = 130;
+    private static final int MAX_WIDTH = 150;
+    private static final int MAX_HEIGHT = 200;
 
     public MovieListAdapter(Context context, ArrayList<Movie> movies) {
         mContext = context;

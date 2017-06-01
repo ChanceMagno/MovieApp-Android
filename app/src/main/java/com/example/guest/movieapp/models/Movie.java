@@ -44,4 +44,5 @@ public class Movie {
     public String getRating() {
         return mRating;
     }
+
 }
