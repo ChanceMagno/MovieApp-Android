@@ -18,7 +18,7 @@ public class Movie {
     //constructor
     public Movie(String title, String photo, String overview, String releaseDate, String rating) {
         this.mTitle = title;
-        this.mPhoto = photo;
+        this.mPhoto = "https://image.tmdb.org/t/p/w500/" + photo;
         this.mOverview = overview;
         this.mReleaseDate = releaseDate;
         this.mRating = rating;
