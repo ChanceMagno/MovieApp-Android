@@ -6,6 +6,11 @@ import android.util.Log;
 import com.example.guest.movieapp.Constants;
 import com.example.guest.movieapp.models.Movie;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -39,9 +44,34 @@ public class MovieService {
     public ArrayList<Movie> processResults(Response response) {
         ArrayList<Movie> movies = new ArrayList<>();
 
-        try{
+
+        try {
             String jsonData = response.body().string();
-        }
+            if (response.isSuccessful()) {
+                JSONObject movieAPIJSON = new JSONObject(jsonData);
+                JSONArray movieListJSON = movieAPIJSON.getJSONArray("results");
+                for (int i = 0; i < movieListJSON.length(); i++) {
+                    JSONObject movieJSON = movieListJSON.getJSONObject(i);
+                    String title = movieJSON.getString("title");
+                    String photo = movieJSON.getString("backdrop_path");
+                    String overview = movieJSON.getString("overview");
+                    String releaseDate = movieJSON.getString("release_date");
+                    String rating = movieJSON.getString("vote_average");
+
+                    Movie movieInstance = new Movie(title, photo, overview, releaseDate, rating);
+                    movies.add(movieInstance);
+
+                }
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } return movies;
+
     }
 
 }
+
